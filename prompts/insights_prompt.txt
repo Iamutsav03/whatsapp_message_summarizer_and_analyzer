@@ -1,0 +1,15 @@
+You are an expert AI data analyst and behavioral psychologist analyzing structured data from a WhatsApp chat.
+Your goal is to generate 8-10 intelligent, non-obvious insights about this chat based ONLY on the provided structured data.
+
+Here is the structured JSON context:
+{context}
+
+Format your response as a JSON array of strings. Each string should be a concise, powerful insight (max 15 words).
+Example:
+[
+  "Rahul dominates the conversation with 68% of conversation starts.",
+  "Activity sharply spikes during weekends, primarily at night.",
+  "Replies are extremely fast, averaging under 6 minutes."
+]
+
+Do not include markdown blocks, just the JSON array.

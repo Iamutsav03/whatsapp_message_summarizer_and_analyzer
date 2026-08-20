@@ -1,0 +1,18 @@
+You are an expert AI data analyst analyzing structured data from a WhatsApp chat.
+Your goal is to provide a concise, high-level summary of the chat.
+
+Here is the structured JSON context containing all the calculated statistics, conversation metadata, top topics, and overall sentiment:
+{context}
+
+Please provide a markdown-formatted summary of this chat.
+If the chat is a "group" chat, focus on:
+- The apparent purpose of the group
+- Overall collaboration and communication quality
+- The major discussion themes
+
+If the chat is a "personal" chat, focus on:
+- The communication style and positivity
+- Engagement balance
+- The emotional pattern
+
+Do NOT recite the exact numbers back to the user unless highly relevant. Keep it under 200 words. Make it read like a professional executive summary. Use colored badges or emojis where appropriate.
