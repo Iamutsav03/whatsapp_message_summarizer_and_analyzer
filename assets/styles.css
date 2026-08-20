@@ -1,0 +1,433 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Global Reset & Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.stApp {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-family);
+}
+
+/* Hide default streamlit footer, but keep header for sidebar toggle */
+header {
+    background-color: transparent !important;
+}
+footer {
+    visibility: hidden;
+}
+
+/* ── Streamlit block-container & Main view: remove default top padding ── */
+[data-testid="stAppViewContainer"] > .main > .block-container,
+.main .block-container,
+.main > div:first-child {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+/* Suppress Streamlit's auto-injected anchor-link SVG on h1 headings */
+h1 .anchor-link,
+h1 a[href^="#"],
+h1 svg {
+    display: none !important;
+}
+
+/* Prevent Streamlit from clipping absolute-positioned tooltips */
+div[data-testid="column"], 
+div.element-container, 
+div.stMarkdown,
+div[data-testid="stVerticalBlock"],
+div[data-testid="stHorizontalBlock"],
+.stBlock {
+    overflow: visible !important;
+}
+
+/* ── Hover Tooltips ──────────────────────────────── */
+.tooltip-container {
+    position: relative;
+}
+
+.tooltip-text {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    width: 230px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: #1A202C !important;
+    color: #FFFFFF !important;
+    font-size: 0.74rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    white-space: normal;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+    opacity: 0 !important;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.tooltip-container:hover .tooltip-text {
+    opacity: 1 !important;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+/* ── Clean SaaS Metric Cards ─────────────────────── */
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-card);
+    padding: 20px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: visible;
+    height: 100%;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 211, 102, 0.35);
+    box-shadow: var(--shadow-glow);
+}
+
+.metric-card h3 {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.metric-card .value {
+    color: var(--text-main);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* Card Utilities & Variants */
+.metric-card-centered {
+    text-align: center;
+}
+
+.metric-card-centered h3 {
+    margin-bottom: 12px;
+}
+
+.metric-card-health {
+    text-align: center;
+    padding: 16px 12px;
+}
+
+.health-gauge-svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 6px;
+}
+
+.health-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.value-md {
+    font-size: 1.5rem !important;
+}
+
+.value-sm {
+    font-size: 1.3rem !important;
+}
+
+.card-details {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+
+/* Topic keyword chip used in Topics tab */
+.kw-badge {
+    display: inline-block;
+    background: rgba(37, 211, 102, 0.12);
+    color: var(--accent-primary);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.text-accent-primary {
+    color: var(--accent-primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.mt-8 {
+    margin-top: 8px !important;
+}
+
+/* ── Spacing Utility ────────────────────────────── */
+.section-spacer {
+    margin-bottom: 24px;
+}
+
+/* ── Sidebar Overrides ───────────────────────────── */
+[data-testid="stSidebar"] {
+    background-color: #0A0C12;
+    border-right: 1px solid var(--border-color);
+}
+
+[data-testid="stSidebar"] > div:first-child,
+[data-testid="stSidebarUserContent"],
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+}
+
+/* Wordmark */
+.sidebar-wordmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 8px 8px;
+    margin-bottom: 4px;
+}
+
+.sidebar-wordmark-icon {
+    width: 34px;
+    height: 34px;
+    background: rgba(37, 211, 102, 0.1);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sidebar-wordmark-icon i {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+}
+
+.sidebar-wordmark-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.01em;
+    font-family: var(--font-family);
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 10px 0 16px;
+}
+
+.sidebar-section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.sidebar-section-label i {
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+}
+
+.sidebar-footer {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+/* SaaS-style Streamlit buttons inside sidebar */
+[data-testid="stSidebar"] .stButton > button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    border-color: rgba(37, 211, 102, 0.4);
+    color: var(--text-main);
+    background: rgba(37, 211, 102, 0.05);
+}
+
+/* ── SaaS Landing Page empty state ───────────────── */
+.landing-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0px 10px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+.landing-hero {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.landing-badge {
+    background: rgba(37, 211, 102, 0.08);
+    color: var(--accent-primary);
+    border: 1px solid rgba(37, 211, 102, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.landing-title {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+.landing-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.landing-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+}
+
+.landing-cue-arrow {
+    color: var(--accent-primary);
+    font-weight: bold;
+    animation: bounceHorizontal 1.5s infinite;
+}
+
+@keyframes bounceHorizontal {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4px); }
+}
+
+/* Feature Grid */
+.landing-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .landing-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .landing-features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-card);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 211, 102, 0.3);
+    box-shadow: var(--shadow-glow);
+}
+
+.feature-icon {
+    background: rgba(37, 211, 102, 0.06);
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(37, 211, 102, 0.15);
+    flex-shrink: 0;
+}
+
+.feature-icon i {
+    font-size: 1.25rem;
+    color: var(--accent-primary);
+}
+
+.feature-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.feature-desc {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0;
+}

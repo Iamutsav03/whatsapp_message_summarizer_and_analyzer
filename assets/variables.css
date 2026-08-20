@@ -1,0 +1,26 @@
+:root {
+    /* Colors */
+    --bg-main: #0B0D13;
+    --bg-card: #141722;
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    
+    /* WhatsApp / Premium Accents */
+    --accent-primary: #25D366;
+    --accent-hover: #1EBD5E;
+    --accent-danger: #EF4444;
+    --accent-info: #3B82F6;
+    
+    /* UI Elements */
+    --border-radius-card: 12px;
+    --border-radius-badge: 8px;
+    --border-color: rgba(255, 255, 255, 0.07);
+    
+    /* Shadows & Understated Depth */
+    --shadow-soft: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 0 1px rgba(37, 211, 102, 0.15), 0 4px 20px rgba(0, 0, 0, 0.25);
+    --glass-blur: blur(8px);
+    
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
